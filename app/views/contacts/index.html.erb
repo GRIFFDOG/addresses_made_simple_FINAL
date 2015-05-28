@@ -20,31 +20,36 @@
   <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><b><%= contact.first_name %> <%= contact.last_name %></b></h3>
+        <h3 class="panel-title"><b><%= contact.first_name %> <%= contact.last_name %> </b>
+        <i> (<a href="mailto:<%= contact.email_address %>"><%= contact.email_address %>)</a></i></h3>
       </div>
       <div class="panel-body">
         <dl>
-          <dt>Email address</dt>
-          <dd><a href="mailto:<%= contact.email_address %>"><%= contact.email_address %></a></dd>
-
-          <dt><b>Address</b></dt>
-          <dd><%= contact.address_line_one %></dd>
-          <dd><%= contact.address_line_two %></dd>
-          <dd><%= contact.city %>, <%= contact.state %> <%= contact.zip_code %></dd>
-
-          <dt>Birthday</dt>
-          <dd><%= contact.birthday %></dd>
-
-          <dt>Date last updated by user</dt>
-          <dd><%= contact.date_last_updated_by_user %></dd>
+          <dd></dd>
 
 
-          <dt>Unique token (*remove before finalizing*)</dt>
-          <dd><%= contact.unique_token %></dd>
 
-          <dt>User requesting addresses (*remove before finalizing*)</dt>
-          <dd><%= contact.user.email %></dd>
+          <% if contact.address_line_one == nil %>
+            <font color="red">No info submitted yet!</font>
+          <% else %>
+            <dt><b><u>Collected Information</u></b></dt>
+            <dt><b>Address</b></dt>
+            <dd><%= contact.address_line_one %></dd>
+            <dd><%= contact.address_line_two %></dd>
+            <dd><%= contact.city %>, <%= contact.state %> <%= contact.zip_code %></dd>
+            <dt>Birthday</dt>
+            <dd><%= contact.birthday %></dd>
 
+            <dt>Date last updated by user</dt>
+            <dd><%= contact.date_last_updated_by_user %></dd>
+          <% end %>
+
+          <dt><p></p> </dt>
+          <dd><font color="red">Unique token (*remove before finalizing*)</font>
+          <%= contact.unique_token %></dd>
+
+          <dt></p></p></dt>
+          <dd><font color="red">User requesting addresses (*remove before finalizing*)</font><%= contact.user.email %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
