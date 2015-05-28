@@ -1,0 +1,70 @@
+<!-- Responsive panel example-->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Contact #<%= @contact.id %></h3>
+      </div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-12">
+            <dl class="dl-horizontal">
+              <dt>Birthday</dt>
+              <dd><%= @contact.birthday %></dd>
+
+              <dt>Unique token</dt>
+              <dd><%= @contact.unique_token %></dd>
+
+              <dt>User</dt>
+              <dd><%= @contact.user_id %></dd>
+
+              <dt>Date last updated by user</dt>
+              <dd><%= @contact.date_last_updated_by_user %></dd>
+
+              <dt>Email address</dt>
+              <dd><%= @contact.email_address %></dd>
+
+              <dt>Zip code</dt>
+              <dd><%= @contact.zip_code %></dd>
+
+              <dt>State</dt>
+              <dd><%= @contact.state %></dd>
+
+              <dt>City</dt>
+              <dd><%= @contact.city %></dd>
+
+              <dt>Address line one</dt>
+              <dd><%= @contact.address_line_one %></dd>
+
+              <dt>Address line two</dt>
+              <dd><%= @contact.address_line_two %></dd>
+
+              <dt>Last name</dt>
+              <dd><%= @contact.last_name %></dd>
+
+              <dt>First name</dt>
+              <dd><%= @contact.first_name %></dd>
+
+            </dl>
+            <div class="btn-group btn-group-justified">
+              <a href="/contacts" class="btn btn-primary">
+                <i class="fa fa-chevron-left"></i>
+              </a>
+
+              <a href="/contacts/<%= @contact.id %>/edit" class="btn btn-warning">
+                <i class="fa fa-edit"></i>
+              </a>
+
+              <a href="/delete_contact/<%= @contact.id %>" class="btn btn-danger" rel="nofollow">
+                <i class="fa fa-trash-o"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End responsive panel example -->

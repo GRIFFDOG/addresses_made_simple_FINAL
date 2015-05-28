@@ -1,0 +1,115 @@
+<div class="page-header">
+  <h1>
+    Contacts
+    <a href="/contacts/new" class="btn btn-lg btn-success"><i class="fa fa-plus"></i></a>
+  </h1>
+</div>
+
+<!-- Responsive, Isotope-based layout example -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <input type="text" id="quicksearch" placeholder="Search Contacts (start typing)" class="form-control">
+  </div>
+</div>
+
+<hr>
+
+<div class="row isotope-container">
+<% @contacts.each do |contact| %>
+  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 isotope-item">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><b><%= contact.first_name %> <%= contact.last_name %></b></h3>
+      </div>
+      <div class="panel-body">
+        <dl>
+          <dt>Email address</dt>
+          <dd><a href="mailto:<%= contact.email_address %>"><%= contact.email_address %></a></dd>
+
+          <dt><b>Address</b></dt>
+          <dd><%= contact.address_line_one %></dd>
+          <dd><%= contact.address_line_two %></dd>
+          <dd><%= contact.city %>, <%= contact.state %> <%= contact.zip_code %></dd>
+
+          <dt>Birthday</dt>
+          <dd><%= contact.birthday %></dd>
+
+          <dt>Date last updated by user</dt>
+          <dd><%= contact.date_last_updated_by_user %></dd>
+
+
+          <dt>Unique token (*remove before finalizing*)</dt>
+          <dd><%= contact.unique_token %></dd>
+
+          <dt>User requesting addresses (*remove before finalizing*)</dt>
+          <dd><%= contact.user.email %></dd>
+
+
+        </dl>
+        <div class="btn-group btn-group-justified">
+          <a href="/contacts/<%= contact.id %>" class="btn btn-primary">
+            <i class="fa fa-search-plus"></i>
+          </a>
+
+          <a href="/contacts/<%= contact.id %>/edit" class="btn btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
+
+          <a href="/delete_contact/<%= contact.id %>" class="btn btn-danger" rel="nofollow">
+            <i class="fa fa-trash-o"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<!-- You can ignore the following. It's a quick and dirty example of how to get a Pinterest-style layout with quick search. -->
+<!-- JavaScript for Isotope layout and quicksearch -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.0.0/isotope.pkgd.min.js"></script>
+<script>
+  $(function() {
+    // quick search regex
+    var qsRegex;
+
+    // init Isotope
+    var $container = $('.isotope-container');
+
+    $container.imagesLoaded(function() {
+      $container.isotope({
+        itemSelector: '.isotope-item',
+        layoutMode: 'masonry',
+        filter: function() {
+          return qsRegex ? $(this).text().match( qsRegex ) : true;
+        }
+      })
+    });
+
+    // use value of search field to filter
+    var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+      qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+      $container.isotope();
+    }, 200 ) );
+
+  });
+
+  // debounce so filtering doesn't happen every millisecond
+  function debounce( fn, threshold ) {
+    var timeout;
+    return function debounced() {
+      if ( timeout ) {
+        clearTimeout( timeout );
+      }
+      function delayed() {
+        fn();
+        timeout = null;
+      }
+      timeout = setTimeout( delayed, threshold || 100 );
+    }
+  }
+</script>
+
+<!-- End responsive, Isotope-based layout example -->
