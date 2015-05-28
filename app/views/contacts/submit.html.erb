@@ -1,0 +1,161 @@
+<!-- Validation failure messages -->
+
+<% if @contact.errors.any? %>
+  <% @contact.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<!-- Responsive panel example -->
+
+<div class="row">
+  <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Submit Address #<%= @contact.id %></h3>
+      </div>
+      <div class="panel-body">
+        <form action="/update_contact/<%= @contact.id %>" method="post" class="form-horizontal">
+          <!-- Hidden input for authenticity token to protect from forgery -->
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+          <!-- Label and input for birthday -->
+          <div class="form-group">
+            <label for="birthday" class="col-sm-2 control-label">
+              Birthday
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="birthday" name="birthday" placeholder="Birthday" class="form-control" value="<%= @contact.birthday %>">
+            </div>
+          </div>
+
+          <!-- Label and input for unique_token -->
+          <div class="form-group">
+            <label for="unique_token" class="col-sm-2 control-label">
+              Unique token
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="unique_token" name="unique_token" placeholder="Unique token" class="form-control" value="<%= @contact.unique_token %>">
+            </div>
+          </div>
+
+          <!-- Label and input for user_id -->
+          <div class="form-group">
+            <label for="user_id" class="col-sm-2 control-label">
+              User
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @contact.user_id %>">
+            </div>
+          </div>
+
+          <!-- Label and input for date_last_updated_by_user -->
+          <div class="form-group">
+            <label for="date_last_updated_by_user" class="col-sm-2 control-label">
+              Date last updated by user
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="date_last_updated_by_user" name="date_last_updated_by_user" placeholder="Date last updated by user" class="form-control" value="<%= @contact.date_last_updated_by_user %>">
+            </div>
+          </div>
+
+          <!-- Label and input for email_address -->
+          <div class="form-group">
+            <label for="email_address" class="col-sm-2 control-label">
+              Email address
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="email_address" name="email_address" placeholder="Email address" class="form-control" value="<%= @contact.email_address %>">
+            </div>
+          </div>
+
+          <!-- Label and input for zip_code -->
+          <div class="form-group">
+            <label for="zip_code" class="col-sm-2 control-label">
+              Zip code
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="zip_code" name="zip_code" placeholder="Zip code" class="form-control" value="<%= @contact.zip_code %>">
+            </div>
+          </div>
+
+          <!-- Label and input for state -->
+          <div class="form-group">
+            <label for="state" class="col-sm-2 control-label">
+              State
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="state" name="state" placeholder="State" class="form-control" value="<%= @contact.state %>">
+            </div>
+          </div>
+
+          <!-- Label and input for city -->
+          <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">
+              City
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="city" name="city" placeholder="City" class="form-control" value="<%= @contact.city %>">
+            </div>
+          </div>
+
+          <!-- Label and input for address_line_one -->
+          <div class="form-group">
+            <label for="address_line_one" class="col-sm-2 control-label">
+              Address line one
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="address_line_one" name="address_line_one" placeholder="Address line one" class="form-control" value="<%= @contact.address_line_one %>">
+            </div>
+          </div>
+
+          <!-- Label and input for address_line_two -->
+          <div class="form-group">
+            <label for="address_line_two" class="col-sm-2 control-label">
+              Address line two
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="address_line_two" name="address_line_two" placeholder="Address line two" class="form-control" value="<%= @contact.address_line_two %>">
+            </div>
+          </div>
+
+          <!-- Label and input for last_name -->
+          <div class="form-group">
+            <label for="last_name" class="col-sm-2 control-label">
+              Last name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="last_name" name="last_name" placeholder="Last name" class="form-control" value="<%= @contact.last_name %>">
+            </div>
+          </div>
+
+          <!-- Label and input for first_name -->
+          <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label">
+              First name
+            </label>
+            <div class="col-sm-10">
+              <input type="text" id="first_name" name="first_name" placeholder="First name" class="form-control" value="<%= @contact.first_name %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button class="btn btn-warning">
+                Update Contact
+              </button>
+              or
+              <a href="/contacts/<%= @contact.id %>">Cancel</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- End responsive panel example -->

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # Routes for the Contact resource:
   # CREATE
   get "/contacts/new", :controller => "contacts", :action => "new"
@@ -14,6 +15,11 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_contact/:id", :controller => "contacts", :action => "destroy"
+
+  # SUBMIT (for users who do not need logons but can access via unique_token)
+  get "/submit/:unique_token", :controller => "contacts", :action => "submit"
+
+
   #------------------------------
 
   devise_for :users

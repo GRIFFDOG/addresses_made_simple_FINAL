@@ -1,4 +1,7 @@
 class ContactsController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:submit, :update]
+
   def index
     @contacts = Contact.all
   end
@@ -58,6 +61,10 @@ class ContactsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def submit
+    @contact = Contact.find_by(unique_token: params[:unique_token])
   end
 
   def destroy

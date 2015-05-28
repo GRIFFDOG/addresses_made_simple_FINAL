@@ -23,6 +23,9 @@
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
           <!-- Hidden input for active user's ID -->
           <input type="hidden" id="user_id" name="user_id" placeholder="User ID" class="form-control" value="<%= current_user.id %>">
+          <!-- Hidden input for unique token assignment -->
+          <input type="hidden" id="unique_token" name="unique_token" placeholder="Unique ID" class="form-control" value="<%= ('a'..'z').to_a.shuffle[0,8].join %>">
+
 
 
           <!-- Label and input for first_name -->
