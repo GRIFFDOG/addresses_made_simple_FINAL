@@ -42,15 +42,14 @@
             <dd><%= contact.birthday %></dd>
 
             <dt>Date last updated by user</dt>
-            <dd><%= contact.date_last_updated_by_user %></dd>
+            <dd><%= contact.date_last_updated_by_user.strftime('%x') %></dd>
           <% end %>
 
           <dt><p></p> </dt>
-          <dd><font color="red">Unique token (*remove before finalizing*)</font>
-          <%= contact.unique_token %></dd>
+          <dd>Link to share with contact: <a href="/submit/<%= contact.unique_token %>">/submit/<%= contact.unique_token %></a></dd>
 
           <dt></p></p></dt>
-          <dd><font color="red">User requesting addresses (*remove before finalizing*)</font><%= contact.user.email %></dd>
+          <dd>User requesting address: <font color="red">TEMP</font><%= contact.user.email %></dd>
 
         </dl>
         <div class="btn-group btn-group-justified">
