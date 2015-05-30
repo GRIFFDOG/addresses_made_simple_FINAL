@@ -56,10 +56,18 @@ class ContactsController < ApplicationController
     @contact.last_name = params[:last_name]
     @contact.first_name = params[:first_name]
 
-    if @contact.save
-      redirect_to "/contacts", :notice => "Contact updated successfully."
+    ## HTTP://LOCALHOST:3000/SUBMIT/[**token**]
+
+    if URI(request.referer).path.split("/").include?("submit")
+
+      render 'show'
+
     else
-      render 'edit'
+      if @contact.save
+        redirect_to "/contacts", :notice => "Contact updated successfully."
+      else
+        render 'edit'
+      end
     end
   end
 

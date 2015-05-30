@@ -46,7 +46,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
-            <li><a href="/users/edit">Profile</a></li>
+            <li><a href="/users/edit"><%= User.find(current_user.id).email %>'s Profile</a></li>
             <li><a href="/users/sign_out" data-method="delete" rel="nofollow">Sign out</a></li>
           <% else %>
             <li><a href="/users/sign_up">Sign up</a></li>
