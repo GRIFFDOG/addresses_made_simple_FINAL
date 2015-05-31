@@ -4,47 +4,43 @@
   <div class="col-sm-offset-1 col-sm-10 col-md-offset-2 col-md-8">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title">Contact #<%= @contact.id %></h3>
+        <h3 class="panel-title"><%= @contact.first_name %> <%= @contact.last_name %></h3>
       </div>
       <div class="panel-body">
         <div class="row">
           <div class="col-md-12">
             <dl class="dl-horizontal">
-              <dt>Birthday</dt>
-              <dd><%= @contact.birthday %></dd>
-
-              <dt>Unique token</dt>
-              <dd><%= @contact.unique_token %></dd>
-
-              <dt>User</dt>
-              <dd><%= @contact.user_id %></dd>
-
-              <dt>Date last updated by user</dt>
-              <dd><%= @contact.date_last_updated_by_user %></dd>
 
               <dt>Email address</dt>
-              <dd><%= @contact.email_address %></dd>
+              <dd><a href="mailto:<%= @contact.email_address %>"><%= @contact.email_address %></a></dd>
 
-              <dt>Zip code</dt>
-              <dd><%= @contact.zip_code %></dd>
+              <dt>Address #1</dt>
+              <dd><%= @contact.address_line_one %></dd>
 
-              <dt>State</dt>
-              <dd><%= @contact.state %></dd>
+              <dt>Address #2</dt>
+              <dd><%= @contact.address_line_two %></dd>
 
               <dt>City</dt>
               <dd><%= @contact.city %></dd>
 
-              <dt>Address line one</dt>
-              <dd><%= @contact.address_line_one %></dd>
+              <dt>State</dt>
+              <dd><%= @contact.state %></dd>
 
-              <dt>Address line two</dt>
-              <dd><%= @contact.address_line_two %></dd>
+              <dt>Zip code</dt>
+              <dd><%= @contact.zip_code %></dd>
 
-              <dt>Last name</dt>
-              <dd><%= @contact.last_name %></dd>
+              <dt>Birthday</dt>
+              <dd><%= @contact.birthday %></dd>
 
-              <dt>First name</dt>
-              <dd><%= @contact.first_name %></dd>
+              <dt>User</dt>
+              <dd><a href="mailto:<%= @contact.user.email %>"><%= @contact.user.email %></a></dd>
+
+              <dt>Date last updated by user</dt>
+              <dd><%= @contact.date_last_updated_by_user.strftime('%x')  %></dd>
+
+              <dt>Unique token</dt>
+              <dd><%= @contact.unique_token %></dd>
+
 
             </dl>
             <div class="btn-group btn-group-justified">

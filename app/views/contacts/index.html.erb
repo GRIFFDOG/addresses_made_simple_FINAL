@@ -32,6 +32,9 @@
 
           <% if contact.address_line_one == nil %>
             <font color="red">No info submitted yet!</font>
+            <dt><p></p> </dt>
+            <a href="mailto:<%= contact.email_address %>?subject=Please share your mailing address with me!&body=Hi <%= contact.first_name %>, Please follow this link to share your mailing address with me:%0D%0A%0D%0A /submit/<%= contact.unique_token %>%0D%0A%0D%0A Thanks!">Send a collection email</a>
+
           <% else %>
             <dt><b><u>Collected Information</u></b></dt>
             <dt><b>Address</b></dt>
@@ -44,11 +47,6 @@
             <dt>Date last updated by user</dt>
             <dd><%= contact.date_last_updated_by_user.strftime('%x') %></dd>
           <% end %>
-
-          <dt><p></p> </dt>
-          <dd>Link to share with contact: <a href="/submit/<%= contact.unique_token %>">/submit/<%= contact.unique_token %></a></dd>
-
-          <a href="mailto:YourName@YourSite.com?subject=I love TextFixer.com&body=I learned to create email link code on this website.">Click here to send them a collection email</a>
 
 
         </dl>

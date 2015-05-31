@@ -6,6 +6,10 @@ class ContactsController < ApplicationController
     @contacts = Contact.all
   end
 
+  def status
+    @contacts = Contact.all
+  end
+
   def show
     @contact = Contact.find(params[:id])
   end
@@ -60,7 +64,12 @@ class ContactsController < ApplicationController
 
     if URI(request.referer).path.split("/").include?("submit")
 
-      render 'show'
+      if @contact.save
+        render 'show', :notice => "Address submitted successfully."
+      else
+        render 'show'
+      end
+
 
     else
       if @contact.save

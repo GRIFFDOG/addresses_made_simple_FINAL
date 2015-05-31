@@ -21,6 +21,10 @@
         <form action="/update_contact/<%= @contact.id %>" method="post" class="form-horizontal">
           <!-- Hidden input for authenticity token to protect from forgery -->
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <!-- Hidden input for unique_token -->
+          <input type="hidden" id="unique_token" name="unique_token" placeholder="Unique token" class="form-control" value="<%= @contact.unique_token %>">
+          <!-- Hidden input for user_id -->
+          <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @contact.user_id %>">
 
           <!-- Label and input for email_address -->
           <div class="form-group">
@@ -108,29 +112,7 @@
               Birthday
             </label>
             <div class="col-sm-10">
-              <input type="text" id="birthday" name="birthday" placeholder="Birthday" class="form-control" value="<%= @contact.birthday %>">
-            </div>
-          </div>
-
-
-          <!-- Label and input for unique_token -->
-          <div class="form-group">
-            <label for="unique_token" class="col-sm-2 control-label">
-              Unique token <font color="red">TEMP</font>
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="unique_token" name="unique_token" placeholder="Unique token" class="form-control" value="<%= @contact.unique_token %>">
-            </div>
-          </div>
-
-
-          <!-- Label and input for user_id -->
-          <div class="form-group">
-            <label for="user_id" class="col-sm-2 control-label">
-              User <font color="red">TEMP</font>
-            </label>
-            <div class="col-sm-10">
-              <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @contact.user_id %>">
+              <input type="date" id="birthday" name="birthday" placeholder="Birthday" class="form-control" value="<%= @contact.birthday %>">
             </div>
           </div>
 
@@ -143,23 +125,6 @@
               <input type="text" id="date_last_updated_by_user" name="date_last_updated_by_user" placeholder="Date last updated by user" class="form-control" value="<%= Date.today %>">
             </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

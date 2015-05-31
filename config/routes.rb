@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get "/contacts/new", :controller => "contacts", :action => "new"
   post "/create_contact", :controller => "contacts", :action => "create"
 
+  # STATUS (for users to see who all has responded and hasn't)
+  get "/contacts/status", :controller => "contacts", :action => "status"
+
   # READ
   get "/contacts", :controller => "contacts", :action => "index"
   get "/contacts/:id", :controller => "contacts", :action => "show"
@@ -18,6 +21,8 @@ Rails.application.routes.draw do
 
   # SUBMIT (for users who do not need logons but can access via unique_token)
   get "/submit/:unique_token", :controller => "contacts", :action => "submit"
+
+
 
 
   #------------------------------
