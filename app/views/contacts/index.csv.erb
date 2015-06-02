@@ -1,0 +1,8 @@
+<%- headers = ['First','Last', 'Email', 'Address 1', 'Address 2', 'City', 'State','Zip', 'Birthday'] -%>
+<%= CSV.generate_line headers -%>
+<%- @contacts.each do |contact| -%>
+   <%- if contact.user_id == current_user.id -%>
+    <%- row = [contact.first_name.chomp, contact.last_name, contact.email_address, contact.address_line_one, contact.address_line_two, contact.city, contact.state, contact.zip_code, contact.birthday] -%>
+    <%= CSV.generate_line(row) -%>
+   <%- end -%>
+<%- end -%>

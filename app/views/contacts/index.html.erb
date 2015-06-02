@@ -3,6 +3,7 @@
     Contacts
     <a href="/contacts/new" class="btn btn-success">Request an Address</a>
   </h1>
+  <%= link_to 'Download CSV File', contacts_path(format: :csv) %>
 </div>
 
 <!-- Responsive, Isotope-based layout example -->
@@ -42,7 +43,7 @@
             <dd><%= contact.address_line_two %></dd>
             <dd><%= contact.city %>, <%= contact.state %> <%= contact.zip_code %></dd>
             <dt>Birthday</dt>
-            <dd><%= contact.birthday %></dd>
+            <dd><%= contact.birthday.strftime('%x') %></dd>
 
             <dt>Date last updated by user</dt>
             <dd><%= contact.date_last_updated_by_user.strftime('%x') %></dd>
