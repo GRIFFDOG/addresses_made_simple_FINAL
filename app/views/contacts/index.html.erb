@@ -43,7 +43,13 @@
             <dd><%= contact.address_line_two %></dd>
             <dd><%= contact.city %>, <%= contact.state %> <%= contact.zip_code %></dd>
             <dt>Birthday</dt>
-            <dd><%= contact.birthday.strftime('%x') %></dd>
+            <dd>
+              <% if  contact.birthday == nil %>
+                  <%= contact.birthday %>
+              <% else %>
+                  <%= contact.birthday.strftime('%x') %>
+              <% end %>
+            </dd>
 
             <dt>Date last updated by user</dt>
             <dd><%= contact.date_last_updated_by_user.strftime('%x') %></dd>
